@@ -5,6 +5,7 @@ import {
   getProfile,
   updateProfile
 } from '../controllers/memberController.js';
+import { Member } from '../models/memberModel.js';
 import {protect} from '../middlewares/protect.js';
 
 const memberRouter = express.Router();
