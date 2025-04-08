@@ -1,0 +1,174 @@
+UI Documentation & Screen Designs
+Based on the API implementation, here's a comprehensive guide to the user interfaces required for the application, covering both member-facing and admin-facing screens.
+
+Member-Facing Screens
+1. Register Screen
+Purpose: Allow new users to create an account
+
+UI Components:
+
+Registration form with fields for:
+Full Name
+Email Address
+Password
+Phone Number
+Address
+Submit button
+Link to Login page
+API Integration:
+
+Screenshot Mockup:
+
+2. Login Screen
+Purpose: Authenticate existing users
+
+UI Components:
+
+Login form with fields for:
+Email
+Password
+Login button
+"Forgot Password" link
+Link to Register page
+API Integration:
+
+Screenshot Mockup:
+
+3. Email Verification Screen
+Purpose: Confirm user's email address
+
+UI Components:
+
+Success/error message
+Button to resend verification email
+Link to login page
+API Integration:
+
+Screenshot Mockup:
+
+4. Profile View Screen
+Purpose: Display member's profile information
+
+UI Components:
+
+Profile picture
+Personal information section (name, email, bio)
+Contact information section (phone, address)
+Professional information (LinkedIn, GitHub)
+Skills section with tags
+Projects section with cards
+Edit profile button
+API Integration:
+
+Screenshot Mockup:
+
+5. Profile Edit Screen
+Purpose: Allow members to update their profile information
+
+UI Components:
+
+Form with editable fields for:
+Name
+Email
+Profile picture upload
+Bio (textarea)
+Phone number
+Address
+LinkedIn profile URL
+GitHub profile URL
+Skills section with option to add/remove
+Projects section with option to add/edit/remove
+Save changes button
+API Integration:
+
+Screenshot Mockup:
+
+Admin-Facing Screens
+1. Admin Dashboard
+Purpose: Overview of member statistics and quick access to admin functions
+
+UI Components:
+
+Statistics cards showing:
+Total members
+Verified members
+Non-verified members
+Suspended members
+Deleted members
+Quick action buttons
+Navigation to other admin screens
+API Integration:
+
+Screenshot Mockup:
+
+2. Member List Screen
+Purpose: Display and filter lists of members for admin management
+
+UI Components:
+
+Filter options (verified, suspended, deleted)
+Search bar
+Sortable table with columns:
+Name
+Email
+Status (Verified/Non-verified)
+Account Status (Active/Suspended/Deleted)
+Actions
+Pagination controls
+API Integration:
+
+Screenshot Mockup:
+
+3. Member Detail Screen
+Purpose: View detailed information about a member and perform admin actions
+
+UI Components:
+
+Member's full profile information
+Status indicators (Verified, Suspended, Deleted)
+Admin action buttons:
+Verify
+Suspend/Unsuspend
+Delete/Restore
+Activity log (optional)
+API Integration:
+
+Screenshot Mockup:
+
+API Usage Guidelines
+1. Authentication Flow:
+User registers via POST /api/members/register
+System sends verification email
+User verifies email via GET /api/members/verify/:token
+User logs in via POST /api/members/login
+Frontend stores JWT token in local storage
+Include token in all authenticated requests:
+2. Profile Management Flow:
+Fetch profile via GET /api/members/profile
+Update profile via PUT /api/members/profile
+For skills and projects updates:
+Send only the new skills/projects to be added
+Backend will handle merging with existing data
+3. Admin Management Flow:
+Admin logs in via same login endpoint (system recognizes admin status)
+Admin can view member lists with different filters
+For member actions:
+Use specific endpoints for each action
+Refresh data after successful action
+Error Handling
+All screens should implement proper error handling:
+
+Form validation errors (display inline)
+API errors (display in notification/toast)
+Authentication errors (redirect to login)
+Special states:
+Account suspended
+Verification pending
+Deleted account
+Implementation Notes
+Use JWT tokens for authentication
+Implement responsive design for mobile compatibility
+Consider accessibility requirements (WCAG 2.1)
+Store member-specific data in context/state management
+Implement proper loading states for API requests
+This UI documentation provides a comprehensive framework for implementing the frontend that works with the existing backend API structure.
